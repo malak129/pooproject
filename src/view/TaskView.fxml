@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="700.0" style="-fx-background-color: #EEEEEE; -fx-padding: 15 0 15 0;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="38.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Helllo, username">
+         <font>
+            <Font name="Calibri Light" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="593.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today Date">
+         <font>
+            <Font name="Calibri Light" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="38.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tasks">
+         <font>
+            <Font name="Calibri Light" size="20.0" />
+         </font>
+      </Text>
+      <ListView layoutX="37.0" layoutY="107.0" prefHeight="422.0" prefWidth="629.0" style="-fx-padding: 15 0 15 0;" />
+   </children>
+</AnchorPane>
