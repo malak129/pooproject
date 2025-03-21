@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 
 public class DataConnection {
-	private static final String URL = "jdbc:mysql://localhost:3306/task_manager2";
+	private static final String URL = "jdbc:mysql://localhost:3306/task_manager";
 	private static final String USER ="root";
 	private static final String PASSWORD = "";
 	private static Connection connection;
@@ -27,5 +27,5 @@ public class DataConnection {
     	e.printStackTrace();
     }
     	return conn;
-    	}
+    	}}
     
