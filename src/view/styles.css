@@ -1,0 +1,16 @@
+.btn:hover {
+   -fx-background-color: #605399;
+}
+.btn { 
+	-fx-background-color: #ADA1E6; 
+    
+	}
+	.anchor-pane {
+	    -fx-background-color: #ffffff;
+	    -fx-background-radius: 10;
+	    -fx-padding: 10;
+	    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
+	}
+	.label {
+	    -fx-font-family: "Segoe UI";
+	}
