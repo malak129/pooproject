@@ -1,36 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-padding: 15 0 15 0;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TaskView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="1011.0" style="-fx-padding: 15 0 15 0;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TaskView">
    <children>
-      <Text layoutX="33.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Helllo, username">
+      <Button layoutX="619.0" layoutY="153.0" mnemonicParsing="false" onAction="#openAddTaskDialog" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #CFE2FF; -fx-background-radius: 10;" text="Add Task" textFill="#195953">
          <font>
-            <Font name="Calibri Light" size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="696.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today Date">
-         <font>
-            <Font name="Calibri Light" size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="50.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tasks">
-         <font>
-            <Font name="Calibri Light" size="20.0" />
-         </font>
-      </Text>
-      <Button layoutX="496.0" layoutY="129.0" mnemonicParsing="false" onAction="#openAddTaskDialog" prefHeight="25.0" prefWidth="87.0" text="Add Task" />
-      <VBox layoutX="33.0" layoutY="167.0" prefHeight="401.0" prefWidth="577.0">
-      <ScrollPane fitToWidth="true" layoutX="59.0" layoutY="125.0" prefHeight="443.0" prefWidth="687.0">
-    <content>
-    <VBox fx:id="taskContainer" layoutX="59.0" layoutY="125.0" prefHeight="441.0" prefWidth="671.0" spacing="15" style="-fx-padding: 15;" />
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+         <HBox layoutX="172.0" layoutY="156.0" spacing="10.0">
+    <children>
+        <ComboBox fx:id="sortComboBox" prefHeight="14.0" prefWidth="133.0" promptText="Sort by Date" style="-fx-background-radius: 10;" />
+        <ComboBox fx:id="categoryComboBox" prefHeight="14.0" prefWidth="137.0" promptText="Filter by Category" style="-fx-background-radius: 10;" />
+        <ComboBox fx:id="priorityComboBox" prefHeight="19.0" prefWidth="137.0" promptText="Filter by Priority" style="-fx-background-radius: 10;" />
+    </children>
+</HBox>
+      <VBox id="task" layoutX="30.0" layoutY="198.0" prefHeight="445.0" prefWidth="691.0" style="-fx-background-radius: 10;">
+      <ScrollPane fitToWidth="true" layoutX="59.0" layoutY="125.0" prefHeight="433.0" prefWidth="577.0" style="-fx-background-radius: 10;">
+       <content>
+    <VBox fx:id="taskContainer" layoutX="59.0" layoutY="125.0" prefHeight="441.0" prefWidth="665.0" spacing="15" style="-fx-padding: 15; -fx-background-radius: 10;" />
      </content>
 </ScrollPane>
+      </VBox>
+      <VBox layoutX="45.0" layoutY="24.0" prefHeight="111.0" prefWidth="670.0" spacing="10.0" style="-fx-background-radius: 10; -fx-background-color: #FFD966;">
+         <children>
+            <Label fx:id="usernameLabel" text="Hello Username!">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="quoteText" prefHeight="42.0" prefWidth="647.0" text="Stay focused. Stay positive. Get it done!">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="745.0" layoutY="24.0" prefHeight="171.0" prefWidth="245.0" style="-fx-background-radius: 10; -fx-background-color: #D1E7DD;">
+         <children>
+            <Label fx:id="dateLabel" alignment="CENTER" contentDisplay="CENTER" text="Today's Date" textAlignment="CENTER" textFill="#195953">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="scoreLabel" prefHeight="44.0" prefWidth="167.0" text="Your Score:" textAlignment="CENTER" textFill="#195953">
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial Black" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Label layoutX="45.0" layoutY="153.0" prefHeight="27.0" prefWidth="105.0" text="My Tasks">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <VBox layoutX="743.0" layoutY="214.0" prefHeight="419.0" prefWidth="245.0" style="-fx-background-radius: 10; -fx-background-color: #CFE2FF;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" text=" Month Progress" textFill="#192857">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <PieChart fx:id="pieChart" prefHeight="273.0" prefWidth="196.0" />
+         </children>
       </VBox>
       
    </children>
