@@ -2,7 +2,6 @@ package view;
 
 import java.io.IOException;
 
-
 import Controller.TaskController;
 import Controller.UserController;
 import javafx.event.ActionEvent;
@@ -45,7 +44,7 @@ public class UserView {
     
     @FXML
     public void handleLogin(ActionEvent event) {
-        // Simulate user authentication (Replace with actual authentication logic)
+    
     	String username = usernameField.getText();
     	String password = passwordField.getText();
     	User user = userController.login(username, password);
@@ -63,9 +62,8 @@ public class UserView {
          	if(!username.isEmpty() && !password.isEmpty()) {
         if (user != null) {
             try {
-                // Load TaskView.fxml
+       
             
-            	; 
                 FXMLLoader taskLoader = new FXMLLoader(getClass().getResource("/view/dashboard.fxml"));
             
                 
@@ -73,14 +71,17 @@ public class UserView {
                UserController userController = new UserController();  
                 userController.login(username, password); 
                 TaskController taskViewController = taskLoader.getController();
-                taskViewController.UserId(user.getId());
+                taskViewController.UserId(user.getId(),user.getUsername(),user.getScore());
                 
               
 
            
                 // Switch scene
                 Stage currentStage = (Stage) usernameField.getScene().getWindow();
-                currentStage.setScene(new Scene(taskRoot, 900, 600));
+                Scene fullScreenScene = new Scene(taskRoot);
+//                currentStage.setScene(new Scene(taskRoot, 900, 600));
+                currentStage.setScene(fullScreenScene);
+                currentStage.setMaximized(true);
                 currentStage.show();
               
                 System.out.println("Stage found: " + currentStage);
@@ -99,7 +100,6 @@ public class UserView {
     public void handleRegister() {
         String username = newUsernameField.getText();
         String password = newPasswordField.getText();
-        boolean registrationSuccessful = userController.register(username, password);
         error1.setText("");
     	error2.setText("");
     	error3.setText("");
@@ -112,17 +112,29 @@ public class UserView {
         		
         	}
         	if(!username.isEmpty() && !password.isEmpty()) {
+        		 boolean registrationSuccessful = userController.register(username, password);
         if (registrationSuccessful) {
             
             try {
 
-            	FXMLLoader taskLoader = new FXMLLoader(getClass().getResource("/view/TaskView.fxml"));
-	            Parent taskRoot = taskLoader.load();
-	            Stage currentStage = (Stage) usernameField.getScene().getWindow();
-	            currentStage.setScene(new Scene(taskRoot, 800, 600));
-	            currentStage.show();
-	           
-	            System.out.println("Stage found: " + currentStage);}
+            	FXMLLoader taskLoader = new FXMLLoader(getClass().getResource("/view/dashboard.fxml"));
+                Parent taskRoot = taskLoader.load();
+                
+                TaskController taskController = taskLoader.getController();
+
+
+                User newUser = userController.login(username, password);
+                if (newUser != null) {
+                    taskController.UserId(newUser.getId(),newUser.getUsername(),0);
+                }
+
+                Stage currentStage = (Stage) usernameField.getScene().getWindow();
+                currentStage.setScene(new Scene(taskRoot, 900, 600));
+                currentStage.show();
+
+                System.out.println("Stage found: " + currentStage);
+                }
+                
             catch(IOException e){
     	   e.printStackTrace();
     	   
@@ -134,4 +146,3 @@ public class UserView {
     }
         }}}
     
-
