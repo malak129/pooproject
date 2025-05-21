@@ -1,0 +1,7 @@
+.button {
+    -fx-background-radius: 10;
+    -fx-text-fill: #333;
+}
+.label {
+    -fx-font-family: "Segoe UI", sans-serif;
+}
