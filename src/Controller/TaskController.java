@@ -2,6 +2,7 @@ package Controller;
 
 import java.util.List;
 
+
 import java.util.Map;
 import java.io.IOException;
 import java.net.URL;
@@ -38,14 +39,7 @@ public class TaskController {
 	        this.taskView = new TaskView();
 	    }
 
-	    public void displayTasks(int userId) {
-	        try {
-	            List<Task> tasks = taskDAO.getTasksByUserId(userId);
-	            taskView.displayTask(tasks);
-	        } catch (SQLException | IOException e) {
-	            System.err.println("Erreur lors de la récupération des tâches : " + e.getMessage());
-	        }
-	    }
+	   
 
 	    public void addTask(String title, String description, LocalDate dueDate, String status, int userId, String priority, String category) {
 	        Task task = new Task(title, description, dueDate, status, userId,priority,category);
@@ -70,8 +64,8 @@ public class TaskController {
 	                // Get current score
 	                User user = userDAO.getUserById(task.getUserId());
 	                int newScore = user.getScore() + points;
-	                score = newScore;
-	                UserId( userId, username, score);
+	                this.score = newScore;
+	                this.UserId( this.userId, this.username, this.score);
 	                // Update DB
 	                userDAO.updateUserScore(user.getId(), newScore);
 	                System.out.println("Statut de la tâche mis à jour avec succès.");
@@ -104,7 +98,7 @@ public class TaskController {
 	    public void deleteTask(int taskId) {
 	        try {
 	        	 if (taskDAO == null) {
-	                 System.err.println("❌ taskDAO is null!");
+	                 System.err.println(" taskDAO is null!");
 	                 return;
 	             }
 	            taskDAO.deleteTask(taskId);
@@ -114,23 +108,8 @@ public class TaskController {
 	        }
 	    }
 
-	    public void filterTasksByStatus(int userId, String status) {
-	        try {
-	            List<Task> tasks = taskDAO.getTasksByStatus(userId, status);
-	            taskView.displayTask(tasks);
-	        } catch (SQLException | IOException e) {
-	            System.err.println("Erreur lors du filtrage des tâches : " + e.getMessage());
-	        }
-	    }
-
-	    public void sortTasksByDueDate(int userId) {
-	        try {
-	            List<Task> tasks = taskDAO.getTasksSortedByDueDate(userId);
-	            taskView.displayTask(tasks);
-	        } catch (SQLException | IOException e) {
-	            System.err.println("Erreur lors du tri des tâches : " + e.getMessage());
-	        }
-	    }
+	  
+	  
 	    @FXML
 	    private AnchorPane dynamicContent;
 	    
@@ -300,9 +279,9 @@ public class TaskController {
 	        }
 	        public int getScoreForPriority(String priority) {
 	            return switch (priority.toLowerCase()) {
-	                case "high" -> 10;
-	                case "medium" -> 5;
-	                case "low" -> 2;
+	                case "high" -> 15;
+	                case "medium" -> 10;
+	                case "low" -> 5;
 	                default -> 0;
 	            };
 	        }
