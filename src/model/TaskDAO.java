@@ -1,8 +1,6 @@
 package model;
 
 import java.io.IOException;
-
-
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -132,18 +130,9 @@ public class TaskDAO {
 		
 	}
 
-	public List<Task> getTasksByStatus(int userId, String status) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Task> getTasksSortedByDueDate(int userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	public List<Task> getOverdueTasks(int userId) throws SQLException, IOException {
 		 List<Task> overdueTasks = new ArrayList<>();
-		    String sql = "SELECT * FROM tasks WHERE due_date < CURDATE() AND user_id = ?";
+		    String sql = "SELECT * FROM tasks WHERE due_date BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE() AND user_id = ?";
 		    try (Connection conn = DataConnection.getConnection();
 		         PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -243,4 +232,6 @@ public class TaskDAO {
    
                                                                                                                                                                                                                      
 }
+
+
 
